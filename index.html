@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0a0d12">
+<title>REAL CAR SIMULATOR INDONESIA</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="loading"><b>MEMUAT DUNIA…</b><span id="err">Three.js gagal dimuat. Hubungkan internet, atau letakkan three.min.js (r128) di folder libs/ lalu muat ulang.</span></div>
+
+<section id="menu" class="screen hidden">
+  <div class="stripe"></div>
+  <h1>REAL CAR<br>SIMULATOR<br><em>INDONESIA</em></h1>
+  <p class="tag">Open world kota · lalu lintas · siang &amp; malam</p>
+  <div class="menubtns">
+    <button id="mPlay" class="big">Mulai mengemudi</button>
+    <button id="mGarage">Garasi</button>
+    <button id="mFs">Layar penuh</button>
+  </div>
+  <p class="help">Keyboard: W/↑ gas · S/↓ mundur · A D/←→ setir · Spasi rem · C kamera · H klakson · L lampu · N siang/malam · Esc menu</p>
+</section>
+
+<section id="garage" class="screen hidden">
+  <div class="gpanel">
+    <h2>Garasi</h2>
+    <div class="gsel"><button id="gPrev">◀</button><div><div id="gName">-</div><div id="gType">-</div></div><button id="gNext">▶</button></div>
+    <div class="stat"><span>Kecepatan</span><i><b id="sSpd"></b></i></div>
+    <div class="stat"><span>Akselerasi</span><i><b id="sAcc"></b></i></div>
+    <div id="swatches"></div>
+    <button id="gGo" class="big">Pilih &amp; main</button>
+    <button id="gBack">Kembali</button>
+  </div>
+</section>
+
+<section id="hud" class="hidden">
+  <div class="top">
+    <div id="clock">12:00</div><div id="camname">Kamera belakang</div>
+    <div class="tb">
+      <button id="bCam">Kamera</button><button id="bLight">Lampu</button><button id="bDay">Siang/Malam</button><button id="bMenu">Menu</button>
+    </div>
+  </div>
+  <div class="dash">
+    <div id="spd">0</div><div class="unit">km/h</div>
+    <div class="rpm"><b id="rpmfill"></b></div>
+    <div class="row"><span id="gear">N</span><span id="rpmtxt">1000 rpm</span><span id="lamp">●</span></div>
+  </div>
+  <div id="wheel"><i></i></div>
+  <div class="pad left"><button id="bL" class="ctl">◀</button><button id="bR" class="ctl">▶</button></div>
+  <div class="pad right">
+    <button id="bHorn" class="ctl small">Klakson</button>
+    <button id="bRev" class="ctl">Mundur</button>
+    <button id="bBrake" class="ctl brake">Rem</button>
+    <button id="bGas" class="ctl gas">Gas</button>
+  </div>
+</section>
+
+<div id="rotate">Putar HP ke mode landscape</div>
+
+<script>
+function ld(s,ok,no){var e=document.createElement('script');e.src=s;e.onload=ok;e.onerror=no;document.head.appendChild(e);}
+function boot(){ld('js/game.js',function(){},function(){document.getElementById('err').style.display='block';});}
+ld('libs/three.min.js',boot,function(){
+  ld('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',boot,function(){document.getElementById('err').style.display='block';});
+});
+</script>
+</body>
+</html>
